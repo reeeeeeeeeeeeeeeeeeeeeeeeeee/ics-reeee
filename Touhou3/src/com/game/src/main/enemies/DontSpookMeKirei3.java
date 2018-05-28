@@ -1,7 +1,5 @@
 package com.game.src.main.enemies;
 
-
-
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -12,13 +10,12 @@ import com.game.src.main.Player;
 import com.game.src.main.classes.EntityB;
 import com.game.src.main.graphics.Textures;
 
-public class CuChulainn extends GameObjectEnemies implements EntityB{
+public class DontSpookMeKirei3 extends GameObjectEnemies implements EntityB{
 
 
 	
-	public CuChulainn(double x, double y, Textures tex, Player p, Controller c,int bulletPattern, int movePattern) {
+	public DontSpookMeKirei3(double x, double y, Textures tex, Player p, Controller c,int bulletPattern, int movePattern) {
 		super(x,y,tex,p,c,bulletPattern,movePattern);
-
 	} 
 	
 	
@@ -27,13 +24,14 @@ public class CuChulainn extends GameObjectEnemies implements EntityB{
 		pew();
 		move();
 		counter++;
-		resetCounter();
+
+		if(counter==720) {
+			counter=0;
+		}
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(tex.cu1, (int)x,(int)y, null);
-		
-		
+		g.drawImage(tex.kotominea, (int)x,(int)y, null);
 	}
 
 }

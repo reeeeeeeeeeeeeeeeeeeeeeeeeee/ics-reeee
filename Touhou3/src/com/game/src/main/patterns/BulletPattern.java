@@ -29,7 +29,7 @@ public class BulletPattern {
 	}
 	//3
 	public void gae(EntityB b, Textures tex, Player p, Controller c) {
-		if(b.getCounter()%60==0) {
+		if(b.getCounter()%120==0) {
 			c.addEntityC(new GaeBulge(b.getX(),b.getY(),tex, p,c, 0));
 		}
 	}

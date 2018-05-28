@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import com.game.src.main.classes.EntityA;
 import com.game.src.main.classes.EntityB;
 import com.game.src.main.classes.EntityC;
+import com.game.src.main.classes.EntityD;
 import com.game.src.main.enemies.Gilgamesh;
 import com.game.src.main.enemies.Humunculus;
 import com.game.src.main.graphics.Textures;
@@ -17,9 +18,11 @@ public class Controller extends Wave1{
 	private LinkedList<EntityA> ea = new LinkedList<EntityA>();
 	private LinkedList<EntityB> eb = new LinkedList<EntityB>();
 	private LinkedList<EntityC> ec = new LinkedList<EntityC>();
+	private LinkedList<EntityD> ed = new LinkedList<EntityD>();
 	EntityA enta;
 	EntityB entb;
 	EntityC entc;
+	EntityD entd;
 	Player p;
 	Game game;	
 	Textures tex;
@@ -59,6 +62,11 @@ public class Controller extends Wave1{
 			entc = ec.get(i);
 			entc.tick();
 		}
+		//D Class
+		for(int i=0; i<ed.size(); i++) {
+			entd = ed.get(i);
+			entd.tick();
+		}
 	}
 	
 	
@@ -77,6 +85,11 @@ public class Controller extends Wave1{
 		for(int i=0; i<ec.size(); i++) {
 			entc = ec.get(i);
 			entc.render(g);
+		}
+		//D Class
+		for(int i=0; i<ed.size(); i++) {
+			entd = ed.get(i);
+			entd.render(g);
 		}
 	}
 	
@@ -98,6 +111,12 @@ public class Controller extends Wave1{
 	public void removeEntityC(EntityC block) {
 		ec.remove(block);
 	}
+	public void addEntityD(EntityD block) {
+		ed.add(block);
+	}
+	public void removeEntityD(EntityD block) {
+		ed.remove(block);
+	}
 	public LinkedList<EntityA> getEntityA(){
 		return ea;
 	}
@@ -106,6 +125,9 @@ public class Controller extends Wave1{
 	}
 	public LinkedList<EntityC> getEntityC(){
 		return ec;
+	}
+	public LinkedList<EntityD> getEntityD(){
+		return ed;
 	}
 	public int getSeconds(){
 		return seconds;

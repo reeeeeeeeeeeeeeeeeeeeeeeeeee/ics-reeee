@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import javax.swing.JFrame;
 
 import com.game.src.main.bullets.Bullet;
+import com.game.src.main.bullets.Excalibur;
 import com.game.src.main.classes.EntityA;
 import com.game.src.main.classes.EntityB;
 import com.game.src.main.classes.EntityC;
@@ -205,6 +206,13 @@ public class Game extends Canvas implements Runnable{
 			}
 			else if(key == KeyEvent.VK_W) {
 				p.setVelY(-5);
+			}
+			else if(key == KeyEvent.VK_E && p.getNP()==100) {
+				c.addEntityD(new Excalibur(p.getX()-3,0,tex,p,c, this));
+				p.setNP(0);
+			}
+			else if(key == KeyEvent.VK_R) {
+				p.setNP(100);
 			}
 			else if(key == KeyEvent.VK_SPACE) {
 				c.addEntityB(new DontSpookMeKirei(p.getX()-300,p.getY()-450,tex,p,c,69,1));

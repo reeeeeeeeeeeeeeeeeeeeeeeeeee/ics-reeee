@@ -13,7 +13,7 @@ import com.game.src.main.music.Music;
 
 public class Player{
 
-
+	private int np;
 
 	private static double xVel = 0;
 	private static double yVel = 0;
@@ -35,12 +35,13 @@ public class Player{
 		this.x = x;
 		this.y = y;
 		hp=3;
+		np = 0;
 		speedMod=1;
 		this.musicPlayer=musicPlayer;
 	}
 	
 	public void tick() throws InterruptedException {
-		
+		maxNP();
 		checkPlayerCollision();
 		
 		x+=xVel*speedMod;
@@ -81,8 +82,9 @@ public class Player{
 			aniFrame++;
 		}
 		else {
-			 g.drawImage(tex.player,(int)x, (int)y, null);
-				g.drawString(Integer.toString(hp), (int)x, (int)y);
+			g.drawImage(tex.player,(int)x, (int)y, null);
+			g.drawString(Integer.toString(hp), (int)x, (int)y);
+			g.drawString(Integer.toString(np), (int)x, (int)y-10);
 		}
 	}
 	
@@ -157,4 +159,16 @@ public class Player{
         if (xVel > 0 && yVel < 0) n = -2*Math.PI + n;
         return n-Math.PI/2;
     }
+	public int getNP() {
+		
+		return(np);
+	}
+	public void setNP(int np) {
+		this.np = np;
+	}
+	public void maxNP() {
+		if(np>100)
+			np=100;
+	}
+	
 }
