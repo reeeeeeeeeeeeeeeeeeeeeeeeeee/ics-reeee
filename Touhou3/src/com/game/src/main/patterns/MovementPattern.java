@@ -1,8 +1,10 @@
 package com.game.src.main.patterns;
 
+import com.game.src.main.Game;
 import com.game.src.main.bullets.BulletSR;
 import com.game.src.main.classes.EntityB;
 import com.game.src.main.classes.EntityC;
+import com.game.src.main.classes.EntityE;
 
 public class MovementPattern extends BulletPattern{
 
@@ -190,12 +192,10 @@ public class MovementPattern extends BulletPattern{
 		a.setYVel(5/Math.pow(2, 0.5));
 	}
 	//34
-	public void niggerniggernigger(EntityB a) {
-		a.setXVel(0);
-		a.setYVel(420696969);
+	public void circle(EntityB a) {
+		a.setXVel(5*Math.cos(Math.toRadians(a.getCounter())));
+		a.setYVel(Math.sin(Math.toRadians(a.getCounter())));
 	}
-	//35
-	
 	
 	
 	
@@ -384,40 +384,37 @@ public class MovementPattern extends BulletPattern{
 			a.setYVel(5/Math.pow(2, 0.5));
 		}
 		//34
-		public void niggerniggernigger(EntityC a) {
-			a.setXVel(0);
-			a.setYVel(420696969);
+		public void circle(EntityC a) {
+			a.setXVel(3*Math.cos(Math.toRadians(a.getCounter())));
+			a.setYVel(Math.sin(Math.toRadians(a.getCounter())));
 		}
-		//35
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 		
-}
+		
+		//EntityE
+		//1
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

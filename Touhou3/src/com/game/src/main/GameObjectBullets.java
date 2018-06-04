@@ -6,28 +6,13 @@ import java.awt.Rectangle;
 import com.game.src.main.classes.EntityB;
 import com.game.src.main.graphics.Textures;
 
-public class GameObjectEnemies extends GameObject implements EntityB{
-	public int bulletPattern;
+public class GameObjectBullets extends GameObject implements EntityB{
 	public int movePattern;
-	public GameObjectEnemies(double x, double y, Textures tex, Player p, Controller c, int bulletPattern, int movePattern) {
+	public GameObjectBullets(double x, double y, Textures tex, Player p, Controller c, int movePattern) {
 		super(x, y, tex, p, c);
-		this.bulletPattern = bulletPattern;
+	
 		this.movePattern = movePattern;
 		
-	}
-	
-	public void pew() {
-		if(bulletPattern==1)		aim1SR(this, tex, p,c);
-		else if(bulletPattern==2)	spread1(this,tex,p,c);
-		else if(bulletPattern==3)	gae(this,tex,p,c);
-		else if(bulletPattern==4)	GOB(this,tex,p,c);
-		else if(bulletPattern==5)	gatepew(this,tex,p,c);
-		else if(bulletPattern==69)	yorokobe(this, tex, p,c);
-		else if(bulletPattern==70)	yorokobeB(this, tex, p,c);
-		else if(bulletPattern==71)	yorokobeQ(this, tex, p,c);
-		else if(bulletPattern==72)	yorokobeA(this, tex, p,c);
-
-		else						System.out.println("pew");
 	}
 	
 	public void move() {
@@ -60,13 +45,7 @@ public class GameObjectEnemies extends GameObject implements EntityB{
 		else if(movePattern==27)	downleft4(this);		
 		else if(movePattern==28)	downleft5(this);		
 		else if(movePattern==29)	downright1(this);
-		else if(movePattern==30)	downright2(this);
-		else if(movePattern==31)	downright3(this);
-		else if(movePattern==32)	downright4(this);
-		else if(movePattern==33)	downright5(this);
-		else if(movePattern==34)	{
-			circle(this);
-		}
+
 		x+=xVel;
 		y+=yVel;
 		

@@ -32,11 +32,11 @@ public class Excalibur extends GameObject implements EntityD{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle((int)x,(int)y,256,Game.HEIGHT*2);
+		return new Rectangle((int)x-128,(int)y,320,Game.HEIGHT*2);
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(tex.excalibah, (int)x, (int)y, null);
+		g.drawImage(tex.excalibah, (int)x-224, (int)y, null);
 	}
 	public double getY() {
 		return y;
@@ -48,7 +48,7 @@ public class Excalibur extends GameObject implements EntityD{
 	public void checkEnemyCollision() {
 		for(int i =0; i<game.eb.size();i++) {
 			EntityB tempEnt = game.eb.get(i);
-			if(Physics.Collision1(this, tempEnt )) {
+			if(Physics.CollisionDB(this, tempEnt )) {
 				c.removeEntityB(tempEnt);
 			}
 		}
@@ -56,7 +56,7 @@ public class Excalibur extends GameObject implements EntityD{
 	public void checkEnemyBulletCollision() {
 		for(int i =0; i<game.ec.size();i++) {
 			EntityC tempEnt = game.ec.get(i);
-			if(Physics.Collision2(this, tempEnt )) {
+			if(Physics.CollisionDC(this, tempEnt )) {
 				c.removeEntityC(tempEnt);
 			}
 		}

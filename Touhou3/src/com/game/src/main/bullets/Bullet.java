@@ -11,6 +11,7 @@ import com.game.src.main.Physics;
 import com.game.src.main.Player;
 import com.game.src.main.classes.EntityA;
 import com.game.src.main.classes.EntityB;
+import com.game.src.main.classes.EntityE;
 import com.game.src.main.graphics.Textures;
 
 public class Bullet extends GameObject implements EntityA{
@@ -26,6 +27,7 @@ public class Bullet extends GameObject implements EntityA{
 	public void tick() {
 			bound();
 			checkEnemyCollision();
+			
 	}
 	
 	public Rectangle getBounds() {
@@ -46,10 +48,19 @@ public class Bullet extends GameObject implements EntityA{
 	public void checkEnemyCollision() {
 		for(int i =0; i<game.eb.size();i++) {
 			EntityB tempEnt = game.eb.get(i);
-			if(Physics.Collision(this, tempEnt )) {
+			if(Physics.CollisionAB(this, tempEnt )) {
 				c.removeEntityA(this);
 				c.removeEntityB(tempEnt);
 				p.setNP(p.getNP()+10);
+			}
+		}
+		for(int i =0; i<game.ee.size();i++) {
+			EntityE tempEnt = game.ee.get(i);
+			if(Physics.CollisionAE(this, tempEnt )) {
+				c.removeEntityA(this);
+				c.setBoss(tempEnt);
+				p.setNP(p.getNP()+10);
+				
 			}
 		}
 	}

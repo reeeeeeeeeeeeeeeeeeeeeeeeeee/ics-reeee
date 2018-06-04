@@ -7,6 +7,7 @@ import com.game.src.main.classes.EntityA;
 import com.game.src.main.classes.EntityB;
 import com.game.src.main.classes.EntityC;
 import com.game.src.main.classes.EntityD;
+import com.game.src.main.classes.EntityE;
 import com.game.src.main.enemies.Gilgamesh;
 import com.game.src.main.enemies.Humunculus;
 import com.game.src.main.graphics.Textures;
@@ -19,15 +20,19 @@ public class Controller extends Wave1{
 	private LinkedList<EntityB> eb = new LinkedList<EntityB>();
 	private LinkedList<EntityC> ec = new LinkedList<EntityC>();
 	private LinkedList<EntityD> ed = new LinkedList<EntityD>();
+	private LinkedList<EntityE> ee = new LinkedList<EntityE>();
 	EntityA enta;
 	EntityB entb;
 	EntityC entc;
 	EntityD entd;
+	EntityE ente;
 	Player p;
 	Game game;	
 	Textures tex;
 	private int ticks;
 	private int seconds;
+	private int kills;
+	private int bossKills;
 	
 	public Controller(Game game, Textures tex, Player p) {
 		this.game = game;
@@ -47,6 +52,11 @@ public class Controller extends Wave1{
 			ticks=0;
 		}
 		spawnEnemy(this, tex, game,p);
+		//D Class
+		for(int i=0; i<ed.size(); i++) {
+			entd = ed.get(i);
+			entd.tick();
+		}
 		//A Class
 		for(int i=0; i<ea.size(); i++) {
 			enta = ea.get(i);
@@ -62,15 +72,20 @@ public class Controller extends Wave1{
 			entc = ec.get(i);
 			entc.tick();
 		}
-		//D Class
-		for(int i=0; i<ed.size(); i++) {
-			entd = ed.get(i);
-			entd.tick();
+		//E Class
+		for(int i=0; i<ee.size(); i++) {
+			ente = ee.get(i);
+			ente.tick();
 		}
 	}
 	
 	
 	public void render(Graphics g) {
+		//D Class
+		for(int i=0; i<ed.size(); i++) {
+			entd = ed.get(i);
+			entd.render(g);
+		}
 		//A Class
 		for(int i=0; i<ea.size(); i++) {
 			enta = ea.get(i);
@@ -86,10 +101,10 @@ public class Controller extends Wave1{
 			entc = ec.get(i);
 			entc.render(g);
 		}
-		//D Class
-		for(int i=0; i<ed.size(); i++) {
-			entd = ed.get(i);
-			entd.render(g);
+		//E Class
+		for(int i=0; i<ee.size(); i++) {
+			ente = ee.get(i);
+			ente.render(g);
 		}
 	}
 	
@@ -117,6 +132,15 @@ public class Controller extends Wave1{
 	public void removeEntityD(EntityD block) {
 		ed.remove(block);
 	}
+	public void addEntityE(EntityE block) {
+		ee.add(block);
+	}
+	public void removeEntityE(EntityE block) {
+		ee.remove(block);
+	}
+	public void setBoss(EntityE block) {
+		block.setHp(block.getHp()-1);
+	}
 	public LinkedList<EntityA> getEntityA(){
 		return ea;
 	}
@@ -129,8 +153,14 @@ public class Controller extends Wave1{
 	public LinkedList<EntityD> getEntityD(){
 		return ed;
 	}
+	public LinkedList<EntityE> getEntityE(){
+		return ee;
+	}
 	public int getSeconds(){
 		return seconds;
+	}
+	public void setSeconds(int seconds) {
+		this.seconds = seconds;
 	}
 
 
@@ -148,9 +178,15 @@ public class Controller extends Wave1{
 
 
 	public int getTicks() {
-		// TODO Auto-generated method stub
 		return ticks;
 	}
+	public void setTicks(int ticks) {
+		this.ticks = ticks;
+	}
+	
+
+
+
 
 
 

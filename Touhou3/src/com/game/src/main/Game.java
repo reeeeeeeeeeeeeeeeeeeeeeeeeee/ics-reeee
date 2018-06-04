@@ -16,6 +16,8 @@ import com.game.src.main.bullets.Excalibur;
 import com.game.src.main.classes.EntityA;
 import com.game.src.main.classes.EntityB;
 import com.game.src.main.classes.EntityC;
+import com.game.src.main.classes.EntityD;
+import com.game.src.main.classes.EntityE;
 import com.game.src.main.enemies.DontSpookMeKirei;
 import com.game.src.main.graphics.ImageLoader;
 import com.game.src.main.graphics.Textures;
@@ -49,6 +51,8 @@ public class Game extends Canvas implements Runnable{
 	public LinkedList<EntityA> ea;
 	public LinkedList<EntityB> eb;
 	public LinkedList<EntityC> ec;
+	public LinkedList<EntityD> ed;
+	public LinkedList<EntityE> ee;
 	public enum STATE{
 		MENU,
 		GAME,
@@ -79,7 +83,8 @@ public class Game extends Canvas implements Runnable{
 		ea = c.getEntityA();
 		eb = c.getEntityB();
 		ec = c.getEntityC();
-
+		ed = c.getEntityD();
+		ee = c.getEntityE();
 	}
 	
 	
@@ -172,14 +177,14 @@ public class Game extends Canvas implements Runnable{
 		g.drawImage(background, 0,0, this);
 		
 		if(State==STATE.GAME) {
-			p.render(g);
 			c.render(g);
+			p.render(g);
 		} else if(State==STATE.MENU) {
 			menu.render(g);
 			
 		} else if(State==STATE.DEATH) {
-			p.render(g);
 			c.render(g);
+			p.render(g);
 			menu.render(g);
 			
 		}

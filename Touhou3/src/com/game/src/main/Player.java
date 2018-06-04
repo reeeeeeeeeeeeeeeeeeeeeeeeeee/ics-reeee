@@ -77,6 +77,7 @@ public class Player{
 	        double temp2 = getAngle(); 
 	        g.drawImage(temp,(int)x, (int)y, null);
 			g.drawString(Integer.toString(hp), (int)x, (int)y);
+			g.drawString(Integer.toString(np), (int)x, (int)y-10);
 			if(aniFrame==tex.playerAni.length*(60/speed)-1)
 				aniFrame=0;
 			aniFrame++;
@@ -134,6 +135,7 @@ public class Player{
 				c.removeAll();
 				x=game.WIDTH;
 				y=500;
+				setNP(0);
 			}
 		}	
 		for(int i=0; i<game.ec.size(); i++) {
@@ -144,6 +146,7 @@ public class Player{
 				c.removeAll();
 				x=game.WIDTH;
 				y=500;
+				setNP(0);
 		
 			}
 		}	
